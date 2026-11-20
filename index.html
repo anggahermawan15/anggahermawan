@@ -1,0 +1,2590 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>ANGGA HERMAWAN — Graphic Designer Portfolio</title>
+    <meta name="description" content="Interactive Laptop Dive graphic design portfolio for Angga Hermawan — Brand Identity, Packaging Design, and Creative Visual Direction." />
+    <meta property="og:title" content="ANGGA HERMAWAN — Graphic Designer Portfolio" />
+    <meta property="og:description" content="Interactive Laptop Dive graphic design portfolio for Angga Hermawan — Brand Identity, Packaging Design, and Creative Visual Direction." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat+Brush&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg-forest-deep: #061b12;
+        --bg-forest-mid: #0b2d1d;
+        --bg-forest-glow: #134a31;
+        --surface-card: #0e2e1f;
+        --surface-laptop-bezel: #0a0d0b;
+        --surface-silver-light: #e5e9e7;
+        --surface-silver-mid: #b8c1bc;
+        --surface-silver-dark: #75807a;
+        --ink-white: #ffffff;
+        --ink-soft: rgba(244, 248, 245, 0.78);
+        --ink-muted: rgba(212, 232, 220, 0.56);
+        --mint: #6ee7b7;
+        --mint-bright: #a7f3d0;
+        --mint-deep: #10b981;
+        --ease-cinematic: cubic-bezier(0.22, 1, 0.36, 1);
+        --ease-snap: cubic-bezier(0.16, 1, 0.3, 1);
+        --dive-duration: 1050ms;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-color: var(--bg-forest-deep);
+        color: var(--ink-white);
+        font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        user-select: none;
+        touch-action: none;
+      }
+
+      button,
+      a {
+        font-family: inherit;
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button:focus-visible,
+      a:focus-visible {
+        outline: 2px solid var(--mint);
+        outline-offset: 3px;
+      }
+
+      /* ==========================================================================
+         STAGE & CINEMATIC STUDIO BACKDROP
+         ========================================================================== */
+      .app-stage {
+        position: relative;
+        width: 100%;
+        height: 100dvh;
+        overflow: hidden;
+        perspective: 1700px;
+        perspective-origin: 50% 50%;
+        background:
+          radial-gradient(ellipse 75% 65% at 50% 42%, rgba(22, 86, 56, 0.72) 0%, rgba(10, 42, 27, 0.92) 56%, rgba(5, 22, 14, 1) 100%);
+      }
+
+      /* Subtle architectural studio film grain, halftone print texture & vignette */
+      .studio-atmosphere {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 1;
+        background:
+          radial-gradient(circle at 50% 34%, rgba(110, 231, 183, 0.12) 0%, transparent 52%),
+          radial-gradient(circle at 18% 78%, rgba(20, 88, 56, 0.36) 0%, transparent 48%),
+          radial-gradient(circle at 82% 22%, rgba(22, 92, 60, 0.32) 0%, transparent 46%),
+          radial-gradient(circle at 50% 55%, transparent 44%, rgba(2, 11, 7, 0.72) 100%);
+      }
+
+      /* Swiss Modular Artboard Sub-grid + Major Grid */
+      .studio-grid-lines {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 1;
+        background-image:
+          linear-gradient(to right, rgba(167, 243, 208, 0.08) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(167, 243, 208, 0.08) 1px, transparent 1px),
+          linear-gradient(to right, rgba(167, 243, 208, 0.035) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(167, 243, 208, 0.035) 1px, transparent 1px);
+        background-size: 144px 144px, 144px 144px, 24px 24px, 24px 24px;
+        mask-image: radial-gradient(ellipse 86% 84% at 50% 48%, black 30%, rgba(0, 0, 0, 0.35) 85%, transparent 100%);
+      }
+
+      /* Tactile Printmaker Halftone Dot Accent */
+      .studio-halftone {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 1;
+        opacity: 0.14;
+        background-image: radial-gradient(rgba(167, 243, 208, 0.45) 1px, transparent 1px);
+        background-size: 16px 16px;
+        mask-image:
+          radial-gradient(circle at 12% 24%, black 0%, transparent 34%),
+          radial-gradient(circle at 88% 76%, black 0%, transparent 36%);
+        -webkit-mask-composite: source-over;
+        mask-composite: add;
+      }
+
+      /* Graphic Design Vector & Editorial Construction SVG Backdrop */
+      .design-theme-backdrop {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+        transition:
+          transform var(--dive-duration) var(--ease-cinematic),
+          opacity 750ms var(--ease-cinematic);
+      }
+
+      body.view-portfolio .design-theme-backdrop {
+        transform: scale(1.18);
+        opacity: 0.28;
+      }
+
+      @media (max-width: 768px) {
+        .studio-grid-lines {
+          background-size: 96px 96px, 96px 96px, 24px 24px, 24px 24px;
+        }
+      }
+
+      /* ==========================================================================
+         TOP FLOATING NAVIGATION (WHITE LABEL STYLE)
+         ========================================================================== */
+      .top-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 60;
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        gap: 16px;
+        padding: 20px 32px;
+        pointer-events: none;
+      }
+
+      .nav-group {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        pointer-events: auto;
+      }
+
+      .nav-group--left {
+        justify-self: start;
+      }
+
+      .nav-group--right {
+        justify-self: end;
+      }
+
+      .nav-pill {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 40px;
+        padding: 9px 18px;
+        background: #ffffff;
+        color: #071e13;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.01em;
+        border: 0;
+        border-radius: 6px;
+        box-shadow:
+          0 10px 28px -8px rgba(0, 0, 0, 0.45),
+          0 2px 6px rgba(0, 0, 0, 0.22);
+        cursor: pointer;
+        white-space: nowrap;
+        flex-shrink: 0;
+        transition:
+          transform 200ms var(--ease-snap),
+          background-color 180ms ease,
+          color 180ms ease,
+          box-shadow 200ms ease;
+      }
+
+      .nav-pill:hover {
+        transform: translateY(-2px);
+        background: var(--mint-bright);
+        color: #05180f;
+        box-shadow:
+          0 16px 32px -8px rgba(0, 0, 0, 0.55),
+          0 0 0 1px rgba(110, 231, 183, 0.5);
+      }
+
+      .nav-pill:active {
+        transform: translateY(0) scale(0.98);
+      }
+
+      .nav-pill.is-active {
+        background: var(--mint);
+        color: #04160e;
+      }
+
+      .nav-center-brand {
+        justify-self: center;
+        pointer-events: auto;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 40px;
+        padding: 8px 20px;
+        background: rgba(255, 255, 255, 0.96);
+        color: #061b12;
+        font-family: 'Anton', sans-serif;
+        font-size: 17px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        border: 0;
+        border-radius: 6px;
+        box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.48);
+        cursor: pointer;
+        white-space: nowrap;
+        flex-shrink: 0;
+        transition: transform 200ms var(--ease-snap), background-color 180ms ease;
+      }
+
+      .nav-center-brand:hover {
+        transform: translateY(-2px);
+        background: #ffffff;
+      }
+
+      /* Mobile Menu Toggle */
+      .mobile-menu-btn {
+        display: none;
+        pointer-events: auto;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: 10px 16px;
+        background: #ffffff;
+        color: #071e13;
+        font-size: 13px;
+        font-weight: 600;
+        border: 0;
+        border-radius: 6px;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+        cursor: pointer;
+        white-space: nowrap;
+      }
+
+      .mobile-drawer {
+        position: fixed;
+        inset: 0;
+        z-index: 70;
+        background: rgba(5, 22, 14, 0.96);
+        backdrop-filter: blur(18px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        padding: 32px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 280ms var(--ease-cinematic);
+      }
+
+      .mobile-drawer.is-open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .mobile-drawer .nav-pill {
+        width: min(280px, 82vw);
+        min-height: 48px;
+        font-size: 16px;
+      }
+
+      .mobile-drawer-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        min-width: 44px;
+        min-height: 44px;
+        background: rgba(255, 255, 255, 0.12);
+        color: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 6px;
+        font-size: 18px;
+        cursor: pointer;
+      }
+
+      /* ==========================================================================
+         STUDIO SCENE (HERO)
+         ========================================================================== */
+      .studio-scene {
+        position: absolute;
+        inset: 0;
+        z-index: 10;
+        transform-origin: 58% 58%;
+        transition:
+          transform var(--dive-duration) var(--ease-cinematic),
+          opacity 750ms var(--ease-cinematic),
+          filter 850ms var(--ease-cinematic);
+        will-change: transform, opacity, filter;
+      }
+
+      body.view-portfolio .studio-scene {
+        transform: scale(1.36) translate3d(-4%, -2%, 0);
+        opacity: 0;
+        filter: blur(12px);
+        pointer-events: none;
+      }
+
+      body.view-about .studio-scene {
+        transform: scale(0.94);
+        opacity: 0.14;
+        filter: blur(14px);
+        pointer-events: none;
+      }
+
+      /* Giant Wordmark Behind Designer */
+      .hero-wordmark-layer {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 11vh;
+        pointer-events: none;
+        overflow: hidden;
+      }
+
+      .hero-wordmark {
+        font-family: 'Anton', sans-serif;
+        font-size: clamp(3.4rem, 11.4vw, 11.2rem);
+        line-height: 0.88;
+        letter-spacing: 0.015em;
+        text-transform: uppercase;
+        color: #ffffff;
+        text-align: center;
+        white-space: nowrap;
+        text-shadow: 0 24px 60px rgba(0, 0, 0, 0.38);
+        opacity: 0;
+        transform: translateY(36px) scale(0.96);
+        animation: wordmarkReveal 1100ms var(--ease-cinematic) 180ms forwards;
+      }
+
+      @keyframes wordmarkReveal {
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      /* Designer Portrait Layer (Foreground over Giant Wordmark) */
+      .designer-stage {
+        position: absolute;
+        inset: 0;
+        z-index: 4;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        pointer-events: none;
+      }
+
+      .designer-figure {
+        position: relative;
+        height: min(88dvh, 840px);
+        aspect-ratio: 1141 / 1379;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        opacity: 0;
+        transform: translateY(28px) scale(0.985);
+        animation: designerEntrance 1150ms var(--ease-cinematic) 80ms forwards;
+      }
+
+      @keyframes designerEntrance {
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      .designer-img-fallback {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center bottom;
+        filter: drop-shadow(0 28px 50px rgba(0, 0, 0, 0.58));
+      }
+
+      /* Subtle bottom studio gradient mask so legs blend into deep green floor */
+      .designer-floor-fade {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 22vh;
+        z-index: 5;
+        pointer-events: none;
+        background: linear-gradient(to top, var(--bg-forest-deep) 0%, rgba(6, 27, 18, 0.72) 48%, transparent 100%);
+      }
+
+      /* Handwritten Typography Overlay: "graphic-design" */
+      .handwritten-overlay {
+        position: absolute;
+        left: 50%;
+        bottom: 13.5vh;
+        transform: translateX(-50%) rotate(-5.5deg);
+        z-index: 7;
+        pointer-events: none;
+        font-family: 'Caveat Brush', cursive;
+        font-size: clamp(2.6rem, 6.2vw, 5.6rem);
+        line-height: 1;
+        color: var(--mint);
+        text-shadow:
+          0 8px 28px rgba(0, 0, 0, 0.65),
+          0 0 32px rgba(110, 231, 183, 0.24);
+        white-space: nowrap;
+        opacity: 0;
+        animation: scriptReveal 950ms var(--ease-cinematic) 480ms forwards;
+      }
+
+      @keyframes scriptReveal {
+        from {
+          opacity: 0;
+          transform: translateX(-50%) rotate(-8deg) translateY(20px) scale(0.94);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(-50%) rotate(-5.5deg) translateY(0) scale(1);
+        }
+      }
+
+      /* Studio Footer Controls & Dive Cue */
+      .studio-bottom-bar {
+        position: absolute;
+        left: 32px;
+        right: 32px;
+        bottom: 24px;
+        z-index: 12;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 24px;
+        pointer-events: none;
+      }
+
+      .studio-meta-block {
+        pointer-events: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .studio-meta-title {
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--mint-bright);
+      }
+
+      .studio-meta-sub {
+        font-size: 13px;
+        color: var(--ink-soft);
+      }
+
+      .dive-cue-btn {
+        pointer-events: auto;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        min-height: 44px;
+        padding: 10px 20px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(167, 243, 208, 0.34);
+        border-radius: 6px;
+        color: #ffffff;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        cursor: pointer;
+        transition: transform 200ms var(--ease-snap), background-color 200ms ease, border-color 200ms ease;
+      }
+
+      .dive-cue-btn:hover {
+        transform: translateY(-2px);
+        background: rgba(110, 231, 183, 0.2);
+        border-color: var(--mint);
+      }
+
+      .dive-cue-arrow {
+        display: inline-flex;
+        animation: bounceCue 2.2s ease-in-out infinite;
+      }
+
+      @keyframes bounceCue {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(4px); }
+      }
+
+      /* Interactive hotspot over designer's laptop */
+      .laptop-hand-hotspot {
+        position: absolute;
+        left: 71%;
+        top: 58%;
+        width: 240px;
+        height: 170px;
+        transform: translate(-50%, -50%) rotate(-8deg);
+        z-index: 15;
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+        border-radius: 12px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        padding-bottom: 10px;
+        pointer-events: auto;
+      }
+
+      .hotspot-label {
+        padding: 6px 12px;
+        background: rgba(6, 27, 18, 0.84);
+        border: 1px solid rgba(110, 231, 183, 0.45);
+        border-radius: 4px;
+        color: var(--mint-bright);
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        opacity: 0;
+        transform: translateY(6px);
+        transition: opacity 200ms ease, transform 200ms var(--ease-snap);
+        white-space: nowrap;
+      }
+
+      .laptop-hand-hotspot:hover .hotspot-label,
+      .laptop-hand-hotspot:focus-visible .hotspot-label {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ==========================================================================
+         HANGING DESIGNER ID CARD (UPPER-RIGHT LANYARD + PLASTIC SLEEVE)
+         ========================================================================== */
+      .lanyard-anchor {
+        position: fixed;
+        top: 66px;
+        right: clamp(20px, 4.5vw, 68px);
+        z-index: 35;
+        transform-origin: top center;
+        pointer-events: auto;
+        transition:
+          transform 750ms var(--ease-cinematic),
+          opacity 520ms ease;
+      }
+
+      body.view-portfolio .lanyard-anchor,
+      body.view-about .lanyard-anchor {
+        transform: translateY(-130%) rotate(-6deg);
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .lanyard-drop {
+        transform-origin: top center;
+        animation: lanyardDrop 1350ms var(--ease-cinematic) 280ms both;
+      }
+
+      @keyframes lanyardDrop {
+        0% {
+          opacity: 0;
+          transform: translateY(-320px) rotate(10deg);
+        }
+        55% {
+          opacity: 1;
+          transform: translateY(10px) rotate(-3.5deg);
+        }
+        78% {
+          transform: translateY(-4px) rotate(2deg);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0) rotate(0deg);
+        }
+      }
+
+      .lanyard-pendulum {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transform-origin: 50% -70px;
+        will-change: transform;
+      }
+
+      .lanyard-strap {
+        width: 18px;
+        height: 68px;
+        margin-top: -70px;
+        background:
+          repeating-linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.08) 0px,
+            rgba(255, 255, 255, 0.08) 2px,
+            rgba(0, 0, 0, 0.14) 2px,
+            rgba(0, 0, 0, 0.14) 4px
+          ),
+          linear-gradient(180deg, #0d3a25 0%, #155136 100%);
+        border-left: 1px solid rgba(167, 243, 208, 0.25);
+        border-right: 1px solid rgba(0, 0, 0, 0.45);
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45);
+      }
+
+      .lanyard-clip {
+        width: 24px;
+        height: 18px;
+        margin-top: -2px;
+        background: linear-gradient(135deg, #d8dedb 0%, #8b948f 52%, #e6ebe8 100%);
+        border-radius: 4px 4px 2px 2px;
+        border: 1px solid rgba(255, 255, 255, 0.45);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        position: relative;
+      }
+
+      .lanyard-clip::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: -6px;
+        transform: translateX(-50%);
+        width: 14px;
+        height: 8px;
+        border: 2px solid #cbd3ce;
+        border-radius: 3px;
+      }
+
+      /* Frosted Transparent Plastic Sleeve */
+      .id-sleeve {
+        position: relative;
+        width: 214px;
+        margin-top: 4px;
+        padding: 16px 10px 10px;
+        background: linear-gradient(155deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.07) 52%, rgba(167, 243, 208, 0.14) 100%);
+        border: 1px solid rgba(255, 255, 255, 0.36);
+        border-radius: 12px;
+        backdrop-filter: blur(8px);
+        box-shadow:
+          0 26px 52px -12px rgba(0, 0, 0, 0.68),
+          inset 0 1px 0 rgba(255, 255, 255, 0.52),
+          inset 0 -1px 0 rgba(255, 255, 255, 0.14);
+        cursor: grab;
+      }
+
+      .id-sleeve::before {
+        /* Die-cut lanyard slot in transparent sleeve */
+        content: '';
+        position: absolute;
+        top: 6px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 34px;
+        height: 5px;
+        border-radius: 999px;
+        background: rgba(4, 18, 12, 0.55);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+      }
+
+      .id-sleeve::after {
+        /* Specular plastic reflection */
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 12px;
+        pointer-events: none;
+        background: linear-gradient(
+          118deg,
+          transparent 18%,
+          rgba(255, 255, 255, 0.24) 32%,
+          rgba(255, 255, 255, 0.03) 44%,
+          transparent 64%
+        );
+      }
+
+      .id-card {
+        position: relative;
+        background: linear-gradient(165deg, #f9fbfa 0%, #e8efeb 100%);
+        color: #071d13;
+        border-radius: 7px;
+        padding: 12px 12px 11px;
+        border: 1px solid rgba(6, 27, 18, 0.12);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16);
+      }
+
+      .id-card-top {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        padding-bottom: 6px;
+        border-bottom: 1px solid rgba(7, 29, 19, 0.14);
+      }
+
+      .id-card-label {
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        color: #0d3a25;
+      }
+
+      .id-card-year {
+        font-size: 10px;
+        font-weight: 700;
+        font-variant-numeric: tabular-nums;
+        color: #0d3a25;
+      }
+
+      .id-card-role {
+        margin-top: 6px;
+        font-family: 'Anton', sans-serif;
+        font-size: 14px;
+        letter-spacing: 0.04em;
+        color: #071d13;
+        line-height: 1.05;
+      }
+
+      .id-card-photo-wrap {
+        margin-top: 8px;
+        display: flex;
+        gap: 9px;
+        align-items: center;
+      }
+
+      .id-card-photo-frame {
+        width: 54px;
+        height: 54px;
+        border-radius: 5px;
+        overflow: hidden;
+        border: 1px solid rgba(7, 29, 19, 0.18);
+        flex-shrink: 0;
+        background: radial-gradient(circle at 50% 30%, #155336 0%, #071e13 100%);
+      }
+
+      .id-card-photo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 8%;
+        transform: scale(1.65);
+        transform-origin: 50% 11%;
+        display: block;
+      }
+
+      .id-card-name-block {
+        min-width: 0;
+      }
+
+      .id-field-key {
+        display: block;
+        font-size: 8px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        color: rgba(7, 29, 19, 0.56);
+        text-transform: uppercase;
+      }
+
+      .id-field-val {
+        display: block;
+        font-size: 10.5px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        color: #071d13;
+        line-height: 1.25;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .id-card-grid {
+        margin-top: 9px;
+        padding-top: 8px;
+        border-top: 1px solid rgba(7, 29, 19, 0.12);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 7px 8px;
+      }
+
+      .id-card-grid-full {
+        grid-column: 1 / -1;
+      }
+
+      /* ==========================================================================
+         3D LAPTOP DIVE RIG & PORTFOLIO SCREEN
+         ========================================================================== */
+      .laptop-dive-layer {
+        position: fixed;
+        inset: 0;
+        z-index: 40;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+        perspective: 1900px;
+      }
+
+      .laptop-3d-rig {
+        position: relative;
+        width: min(88vw, 1080px);
+        aspect-ratio: 16 / 10;
+        transform-style: preserve-3d;
+        will-change: transform, opacity;
+        /* Resting state: tucked inside the designer's left hand in studio hero */
+        opacity: 0;
+        transform: translate3d(16vw, 7vh, -520px) rotateY(-30deg) rotateX(12deg) rotateZ(-5deg) scale(0.22);
+        transition:
+          transform var(--dive-duration) var(--ease-cinematic),
+          opacity 620ms var(--ease-cinematic);
+      }
+
+      body.view-portfolio .laptop-3d-rig {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translate3d(0, 14px, 0) rotateY(0deg) rotateX(0deg) rotateZ(0deg) scale(1);
+      }
+
+      /* Brushed Silver Aluminum Lid Shell */
+      .laptop-lid {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        padding: clamp(10px, 1.4vw, 18px);
+        background: linear-gradient(145deg, #d7deda 0%, #aeb7b2 48%, #8f9993 100%);
+        border-radius: clamp(14px, 2vw, 24px) clamp(14px, 2vw, 24px) 10px 10px;
+        box-shadow:
+          0 48px 110px -18px rgba(0, 0, 0, 0.85),
+          0 0 0 1px rgba(255, 255, 255, 0.45),
+          inset 0 2px 3px rgba(255, 255, 255, 0.65);
+        transform-style: preserve-3d;
+      }
+
+      /* Black Glass Screen Bezel */
+      .laptop-bezel {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background: #060a08;
+        border-radius: clamp(8px, 1.2vw, 15px);
+        padding: clamp(6px, 0.9vw, 12px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      /* Subtle Camera Notch */
+      .laptop-camera-dot {
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #1a2821;
+        border: 1px solid rgba(110, 231, 183, 0.28);
+        z-index: 20;
+      }
+
+      /* Silver Lower Deck Hinge Lip */
+      .laptop-deck {
+        position: absolute;
+        left: -3%;
+        right: -3%;
+        bottom: -18px;
+        height: 18px;
+        background: linear-gradient(180deg, #dde3e0 0%, #9da6a1 68%, #6c7570 100%);
+        border-radius: 2px 2px 14px 14px;
+        box-shadow: 0 22px 42px rgba(0, 0, 0, 0.7);
+      }
+
+      .laptop-deck::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 14%;
+        height: 5px;
+        background: #7d8681;
+        border-radius: 0 0 6px 6px;
+      }
+
+      /* ==========================================================================
+         PORTFOLIO INTERFACE INSIDE LAPTOP SCREEN
+         ========================================================================== */
+      .screen-os {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background:
+          radial-gradient(ellipse at 78% 20%, rgba(20, 78, 52, 0.42) 0%, transparent 55%),
+          #071c12;
+        border-radius: clamp(6px, 0.9vw, 10px);
+        overflow: hidden;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+      }
+
+      .screen-topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 14px 22px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(5, 20, 13, 0.72);
+      }
+
+      .screen-brand {
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--mint-bright);
+        white-space: nowrap;
+      }
+
+      .case-tabs {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        min-width: 0;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+
+      .case-tabs::-webkit-scrollbar {
+        display: none;
+      }
+
+      .case-tab-btn {
+        min-height: 34px;
+        padding: 6px 11px;
+        background: transparent;
+        color: var(--ink-muted);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 4px;
+        font-size: 11.5px;
+        font-weight: 600;
+        font-variant-numeric: tabular-nums;
+        cursor: pointer;
+        white-space: nowrap;
+        flex-shrink: 0;
+        transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+      }
+
+      .case-tab-btn:hover {
+        color: #ffffff;
+        border-color: rgba(167, 243, 208, 0.45);
+      }
+
+      .case-tab-btn.is-active {
+        background: var(--mint);
+        color: #04160e;
+        border-color: var(--mint);
+      }
+
+      .screen-body {
+        display: grid;
+        grid-template-columns: 1.32fr 1fr;
+        gap: 24px;
+        padding: 22px;
+        min-height: 0;
+        align-items: stretch;
+      }
+
+      .case-visual-frame {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        min-height: 220px;
+        border-radius: 8px;
+        overflow: hidden;
+        background: #0b2619;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .case-visual-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 650ms var(--ease-cinematic), opacity 320ms ease;
+      }
+
+      .case-visual-frame:hover .case-visual-img {
+        transform: scale(1.025);
+      }
+
+      .case-visual-fallback {
+        position: absolute;
+        inset: 0;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        text-align: center;
+        background: radial-gradient(circle at 50% 40%, #144930 0%, #071c12 100%);
+        color: var(--mint-bright);
+        font-family: 'Anton', sans-serif;
+        font-size: 28px;
+        letter-spacing: 0.04em;
+      }
+
+      .case-info-pane {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 6px 4px;
+        min-width: 0;
+      }
+
+      .case-ticket-header {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .case-index-line {
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--mint);
+        font-variant-numeric: tabular-nums;
+      }
+
+      .case-title {
+        font-family: 'Anton', sans-serif;
+        font-size: clamp(1.9rem, 3.2vw, 3rem);
+        line-height: 0.96;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        color: #ffffff;
+        text-wrap: balance;
+      }
+
+      .case-meta-list {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 14px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.14);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+      }
+
+      .case-meta-row {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 12px;
+        font-size: 12.5px;
+      }
+
+      .case-meta-key {
+        color: var(--ink-muted);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-weight: 500;
+      }
+
+      .case-meta-val {
+        color: #ffffff;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        text-align: right;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .case-description {
+        font-size: clamp(14px, 1.15vw, 15.5px);
+        line-height: 1.58;
+        color: var(--ink-soft);
+      }
+
+      .case-cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .cta-primary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        min-height: 42px;
+        padding: 10px 18px;
+        background: var(--mint);
+        color: #04160e;
+        font-size: 13px;
+        font-weight: 700;
+        border-radius: 5px;
+        border: 0;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: transform 180ms var(--ease-snap), background-color 180ms ease;
+      }
+
+      .cta-primary:hover {
+        transform: translateY(-1px);
+        background: var(--mint-bright);
+      }
+
+      .cta-secondary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 42px;
+        padding: 10px 16px;
+        background: rgba(255, 255, 255, 0.08);
+        color: #ffffff;
+        font-size: 13px;
+        font-weight: 600;
+        border-radius: 5px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        cursor: pointer;
+        white-space: nowrap;
+        transition: background-color 180ms ease, border-color 180ms ease;
+      }
+
+      .cta-secondary:hover {
+        background: rgba(255, 255, 255, 0.14);
+        border-color: rgba(167, 243, 208, 0.5);
+      }
+
+      /* Portfolio Screen Bottom Controls */
+      .screen-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 12px 22px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(5, 20, 13, 0.78);
+      }
+
+      .case-nav-controls {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .case-arrow-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        min-height: 36px;
+        padding: 7px 14px;
+        background: rgba(255, 255, 255, 0.09);
+        color: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: background-color 160ms ease, border-color 160ms ease, transform 160ms var(--ease-snap);
+      }
+
+      .case-arrow-btn:hover {
+        background: rgba(110, 231, 183, 0.18);
+        border-color: var(--mint);
+        transform: translateY(-1px);
+      }
+
+      .screen-hint {
+        font-size: 12px;
+        color: var(--ink-muted);
+        white-space: nowrap;
+      }
+
+      /* ==========================================================================
+         ABOUT ME PANEL
+         ========================================================================== */
+      .about-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 45;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 92px 28px 32px;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(24px) scale(0.98);
+        transition:
+          opacity 520ms var(--ease-cinematic),
+          transform 640ms var(--ease-cinematic);
+      }
+
+      body.view-about .about-overlay {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0) scale(1);
+      }
+
+      .about-card {
+        width: min(980px, 100%);
+        background: rgba(9, 34, 22, 0.92);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(167, 243, 208, 0.22);
+        border-radius: 14px;
+        padding: clamp(24px, 3.6vw, 44px);
+        box-shadow: 0 40px 90px rgba(0, 0, 0, 0.65);
+        display: grid;
+        grid-template-columns: 260px 1fr;
+        gap: clamp(24px, 3.4vw, 42px);
+        align-items: center;
+      }
+
+      .about-portrait-box {
+        position: relative;
+        aspect-ratio: 1 / 1;
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        background: radial-gradient(circle at 50% 28%, #165638 0%, #071e13 100%);
+      }
+
+      .about-portrait-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center bottom;
+        padding-top: 8px;
+        filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.45));
+        display: block;
+      }
+
+      .about-kicker {
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--mint);
+      }
+
+      .about-heading {
+        margin-top: 8px;
+        font-family: 'Anton', sans-serif;
+        font-size: clamp(2.1rem, 4vw, 3.3rem);
+        line-height: 0.96;
+        letter-spacing: 0.02em;
+        color: #ffffff;
+        text-wrap: balance;
+      }
+
+      .about-copy {
+        margin-top: 14px;
+        font-size: 15.5px;
+        line-height: 1.65;
+        color: var(--ink-soft);
+        max-width: 58ch;
+      }
+
+      .about-specs {
+        margin-top: 20px;
+        padding: 14px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.14);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+
+      .about-spec-label {
+        display: block;
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--ink-muted);
+      }
+
+      .about-spec-value {
+        display: block;
+        margin-top: 4px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #ffffff;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .about-actions {
+        margin-top: 22px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      /* ==========================================================================
+         RESPONSIVE BREAKPOINTS (TABLET & MOBILE)
+         ========================================================================== */
+      @media (max-width: 1024px) {
+        .laptop-3d-rig {
+          width: min(94vw, 900px);
+        }
+
+        .screen-body {
+          grid-template-columns: 1.15fr 1fr;
+          gap: 16px;
+          padding: 16px;
+        }
+
+        .lanyard-anchor {
+          right: 20px;
+        }
+
+        .id-sleeve {
+          width: 186px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .top-nav {
+          padding: 14px 16px;
+          grid-template-columns: auto 1fr auto;
+        }
+
+        .nav-group {
+          display: none;
+        }
+
+        .nav-center-brand {
+          grid-column: 1;
+          justify-self: start;
+          font-size: 15px;
+          padding: 8px 14px;
+          min-height: 44px;
+        }
+
+        .mobile-menu-btn {
+          display: inline-flex;
+          grid-column: 3;
+          justify-self: end;
+          min-height: 44px;
+        }
+
+        .hero-wordmark-layer {
+          padding: 0 0 24vh;
+        }
+
+        .hero-wordmark {
+          font-size: clamp(2.4rem, 11.8vw, 4.4rem);
+        }
+
+        .designer-figure {
+          height: min(74dvh, 580px);
+          width: auto;
+          max-height: none;
+        }
+
+        .handwritten-overlay {
+          bottom: 18vh;
+          font-size: clamp(2.1rem, 9.5vw, 3.4rem);
+        }
+
+        .lanyard-anchor {
+          top: 66px;
+          right: 12px;
+          transform: scale(0.74);
+          transform-origin: top right;
+        }
+
+        body.view-portfolio .lanyard-anchor,
+        body.view-about .lanyard-anchor {
+          transform: translateY(-130%) scale(0.74);
+        }
+
+        .studio-bottom-bar {
+          left: 16px;
+          right: 16px;
+          bottom: 16px;
+        }
+
+        .studio-meta-sub {
+          display: none;
+        }
+
+        .laptop-hand-hotspot {
+          width: 140px;
+          height: 110px;
+        }
+
+        /* CLEAN MOBILE PORTFOLIO SCREEN */
+        .laptop-dive-layer {
+          padding: max(68px, calc(env(safe-area-inset-top) + 58px)) 12px max(14px, env(safe-area-inset-bottom));
+        }
+
+        .laptop-3d-rig {
+          width: 100%;
+          height: 100%;
+          max-width: 500px;
+          max-height: 680px;
+          aspect-ratio: auto;
+          transform: translate3d(0, 40px, -240px) scale(0.86);
+        }
+
+        body.view-portfolio .laptop-3d-rig {
+          transform: translate3d(0, 0, 0) rotateY(0deg) rotateX(0deg) rotateZ(0deg) scale(1);
+        }
+
+        .laptop-lid {
+          height: 100%;
+          min-height: 0;
+          padding: 6px;
+          border-radius: 14px;
+        }
+
+        .laptop-bezel {
+          height: 100%;
+          min-height: 0;
+          padding: 4px;
+          border-radius: 10px;
+        }
+
+        .screen-os {
+          height: 100%;
+          min-height: 0;
+        }
+
+        .laptop-deck {
+          display: none;
+        }
+
+        .screen-topbar {
+          padding: 8px 10px;
+        }
+
+        .screen-brand {
+          display: none;
+        }
+
+        .case-tabs {
+          width: 100%;
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          gap: 6px;
+          overflow: visible;
+        }
+
+        .case-tab-btn {
+          width: 100%;
+          min-height: 36px;
+          padding: 6px 4px;
+          font-size: 12px;
+          text-align: center;
+          justify-content: center;
+        }
+
+        .case-tab-btn .tab-label {
+          display: none;
+        }
+
+        .screen-body {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          gap: 10px;
+          padding: 12px;
+          min-height: 0;
+          overflow-y: auto;
+          touch-action: pan-y;
+          overscroll-behavior: contain;
+          -webkit-overflow-scrolling: touch;
+        }
+
+        .case-visual-frame {
+          flex-shrink: 0;
+          width: 100%;
+          height: auto;
+          aspect-ratio: 16 / 9;
+          min-height: 0;
+          border-radius: 6px;
+        }
+
+        .case-info-pane {
+          flex: 1 0 auto;
+          padding: 0;
+          gap: 10px;
+          justify-content: space-between;
+        }
+
+        .case-ticket-header {
+          gap: 6px;
+        }
+
+        .case-index-line {
+          font-size: 11px;
+        }
+
+        .case-title {
+          font-size: clamp(1.35rem, 5.8vw, 1.8rem);
+          line-height: 1;
+        }
+
+        .case-meta-list {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 6px 12px;
+          padding: 8px 0;
+        }
+
+        .case-meta-row {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 2px;
+          font-size: 11px;
+        }
+
+        .case-meta-val {
+          text-align: left;
+          font-size: 11.5px;
+        }
+
+        .case-meta-row--category {
+          grid-column: 1 / -1;
+          flex-direction: row;
+          align-items: baseline;
+          justify-content: space-between;
+        }
+
+        .case-meta-row--category .case-meta-val {
+          text-align: right;
+        }
+
+        .case-description {
+          font-size: 13px;
+          line-height: 1.48;
+        }
+
+        .case-cta-row {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 8px;
+          width: 100%;
+        }
+
+        .case-cta-row .cta-primary,
+        .case-cta-row .cta-secondary {
+          width: 100%;
+          min-height: 42px;
+          padding: 8px 10px;
+          font-size: 12.5px;
+        }
+
+        .screen-footer {
+          padding: 8px 10px;
+        }
+
+        .screen-hint {
+          display: none;
+        }
+
+        .case-nav-controls {
+          width: 100%;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 8px;
+        }
+
+        .case-arrow-btn {
+          width: 100%;
+          justify-content: center;
+          min-height: 40px;
+          font-size: 12.5px;
+        }
+
+        .about-overlay {
+          padding: max(68px, calc(env(safe-area-inset-top) + 58px)) 12px max(14px, env(safe-area-inset-bottom));
+        }
+
+        .about-card {
+          width: 100%;
+          max-width: 500px;
+          grid-template-columns: 1fr;
+          gap: 14px;
+          max-height: 100%;
+          overflow-y: auto;
+          touch-action: pan-y;
+          overscroll-behavior: contain;
+          -webkit-overflow-scrolling: touch;
+          padding: 18px;
+        }
+
+        .about-portrait-box {
+          width: 104px;
+        }
+
+        .about-heading {
+          font-size: 1.85rem;
+        }
+
+        .about-copy {
+          font-size: 13.5px;
+          line-height: 1.55;
+        }
+
+        .about-specs {
+          grid-template-columns: 1fr 1fr;
+          gap: 10px 14px;
+        }
+
+        .about-actions {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 8px;
+        }
+
+        .about-actions .cta-primary {
+          grid-column: 1 / -1;
+          min-height: 44px;
+        }
+
+        .about-actions .cta-secondary {
+          min-height: 44px;
+        }
+      }
+
+      /* ==========================================================================
+         REDUCED MOTION ACCESSIBILITY
+         ========================================================================== */
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 180ms !important;
+        }
+
+        .laptop-3d-rig {
+          transform: translate3d(0, 0, 0) scale(0.98) !important;
+        }
+
+        body.view-portfolio .laptop-3d-rig {
+          transform: translate3d(0, 14px, 0) scale(1) !important;
+        }
+      }
+
+      /* ===== ADMIN DASHBOARD (Supabase) ===== */
+      .adm{position:fixed;inset:0;z-index:9999;background:rgba(3,14,9,.94);backdrop-filter:blur(8px);overflow:auto;user-select:text;-webkit-user-select:text;touch-action:pan-y;color:#fff;font-family:'Inter Tight',sans-serif;padding:max(16px,env(safe-area-inset-top)) 16px 40px}
+      .adm[hidden]{display:none}
+      .adm-box,.adm-wrap{max-width:980px;margin:4vh auto;background:#0b2d1d;border:1px solid rgba(167,243,208,.25);border-radius:16px;padding:22px}
+      .adm-box{max-width:380px}
+      .adm h3{margin-bottom:14px;font-family:Anton,sans-serif;letter-spacing:.06em;font-weight:400;color:#a7f3d0}
+      .adm input,.adm textarea{width:100%;margin:4px 0 12px;padding:10px 12px;border-radius:8px;border:1px solid rgba(167,243,208,.3);background:#061b12;color:#fff;font:inherit;font-size:14px}
+      .adm textarea{min-height:130px;resize:vertical}
+      .adm label,.adm-img>span{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(212,232,220,.7)}
+      .adm-btn,.adm-pick button,.adm-tabs button{cursor:pointer;border:1px solid rgba(167,243,208,.35);background:transparent;color:#fff;border-radius:999px;padding:8px 16px;font:inherit;font-size:13px}
+      .adm-pri,.adm-pick .on,.adm-tabs .on{background:#6ee7b7;color:#061b12;border-color:#6ee7b7;font-weight:600}
+      .adm-top{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+      .adm-top span:first-of-type{margin-left:auto;font-size:12px;opacity:.7}
+      .adm-tabs,.adm-pick,.adm-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+      .adm-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:16px}
+      .adm-img{margin-bottom:14px}
+      .adm-img img{width:100%;max-height:200px;object-fit:contain;background:#061b12;border-radius:8px;margin:6px 0}
+      .adm-msg{font-size:12px;color:#6ee7b7}.adm-msg.bad{color:#fca5a5}
+      @media(max-width:720px){.adm-grid{grid-template-columns:1fr}}
+    </style>
+  </head>
+  <body class="view-studio">
+    <main class="app-stage" id="appStage">
+      <div class="studio-atmosphere" aria-hidden="true"></div>
+      <div class="studio-grid-lines" aria-hidden="true"></div>
+      <div class="studio-halftone" aria-hidden="true"></div>
+
+      <!-- GRAPHIC DESIGN VECTOR, GRID & PRINT REGISTRATION BACKDROP -->
+      <svg
+        class="design-theme-backdrop"
+        viewBox="0 0 1440 900"
+        preserveAspectRatio="xMidYMid slice"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <g stroke="#a7f3d0" stroke-opacity="0.16" stroke-width="1">
+          <!-- Artboard bleed & safe margin frame -->
+          <rect x="44" y="44" width="1352" height="812" stroke-dasharray="6 8" />
+          <line x1="720" y1="30" x2="720" y2="870" stroke-opacity="0.09" />
+          <line x1="30" y1="450" x2="1410" y2="450" stroke-opacity="0.09" />
+
+          <!-- Corner crop marks -->
+          <path d="M24 58 H44 V24 M1416 58 H1396 V24 M24 842 H44 V876 M1416 842 H1396 V876" stroke-opacity="0.32" />
+
+          <!-- Print registration target (top-left & bottom-right) -->
+          <g transform="translate(88 124)" stroke-opacity="0.28">
+            <circle cx="0" cy="0" r="14" />
+            <circle cx="0" cy="0" r="6" />
+            <line x1="-22" y1="0" x2="22" y2="0" />
+            <line x1="0" y1="-22" x2="0" y2="22" />
+          </g>
+          <g transform="translate(1348 776)" stroke-opacity="0.28">
+            <circle cx="0" cy="0" r="14" />
+            <circle cx="0" cy="0" r="6" />
+            <line x1="-22" y1="0" x2="22" y2="0" />
+            <line x1="0" y1="-22" x2="0" y2="22" />
+          </g>
+
+          <!-- Geometric logo & golden-ratio construction circles behind studio center -->
+          <circle cx="720" cy="430" r="290" stroke-dasharray="4 6" stroke-opacity="0.13" />
+          <circle cx="720" cy="430" r="196" stroke-opacity="0.11" />
+          <circle cx="540" cy="430" r="196" stroke-dasharray="3 7" stroke-opacity="0.09" />
+          <circle cx="900" cy="430" r="196" stroke-dasharray="3 7" stroke-opacity="0.09" />
+          <line x1="310" y1="840" x2="1130" y2="60" stroke-opacity="0.08" />
+          <line x1="310" y1="60" x2="1130" y2="840" stroke-opacity="0.08" />
+        </g>
+
+        <!-- Sweeping Pen-Tool Bezier Curves with Anchor Nodes & Tangent Handles -->
+        <g stroke="#6ee7b7" stroke-linecap="round">
+          <!-- Left-to-top expressive Bezier curve -->
+          <path
+            d="M 70 760 C 210 560, 180 280, 410 190"
+            stroke-opacity="0.24"
+            stroke-width="1.5"
+          />
+          <line x1="70" y1="760" x2="210" y2="560" stroke-opacity="0.28" stroke-width="1" stroke-dasharray="4 4" />
+          <line x1="410" y1="190" x2="180" y2="280" stroke-opacity="0.28" stroke-width="1" stroke-dasharray="4 4" />
+          <rect x="65" y="755" width="10" height="10" fill="#061b12" stroke="#6ee7b7" stroke-width="1.5" stroke-opacity="0.55" />
+          <rect x="405" y="185" width="10" height="10" fill="#061b12" stroke="#6ee7b7" stroke-width="1.5" stroke-opacity="0.55" />
+          <circle cx="210" cy="560" r="4.5" fill="#061b12" stroke="#a7f3d0" stroke-width="1.2" stroke-opacity="0.5" />
+          <circle cx="180" cy="280" r="4.5" fill="#061b12" stroke="#a7f3d0" stroke-width="1.2" stroke-opacity="0.5" />
+
+          <!-- Right-side sweeping Bezier arc -->
+          <path
+            d="M 1010 730 C 1180 650, 1210 410, 1365 290"
+            stroke-opacity="0.22"
+            stroke-width="1.5"
+          />
+          <line x1="1010" y1="730" x2="1180" y2="650" stroke-opacity="0.26" stroke-width="1" stroke-dasharray="4 4" />
+          <line x1="1365" y1="290" x2="1210" y2="410" stroke-opacity="0.26" stroke-width="1" stroke-dasharray="4 4" />
+          <rect x="1005" y="725" width="10" height="10" fill="#061b12" stroke="#6ee7b7" stroke-width="1.5" stroke-opacity="0.5" />
+          <rect x="1360" y="285" width="10" height="10" fill="#061b12" stroke="#6ee7b7" stroke-width="1.5" stroke-opacity="0.5" />
+          <circle cx="1180" cy="650" r="4.5" fill="#061b12" stroke="#a7f3d0" stroke-width="1.2" stroke-opacity="0.48" />
+          <circle cx="1210" cy="410" r="4.5" fill="#061b12" stroke="#a7f3d0" stroke-width="1.2" stroke-opacity="0.48" />
+        </g>
+
+        <!-- Minimal CMYK Swatch Bars (Bottom Left Artboard Margin) -->
+        <g transform="translate(88 730)" opacity="0.34">
+          <rect x="0" y="0" width="14" height="6" rx="1" fill="#6ee7b7" />
+          <rect x="18" y="0" width="14" height="6" rx="1" fill="#a7f3d0" />
+          <rect x="36" y="0" width="14" height="6" rx="1" fill="#ffffff" />
+          <rect x="54" y="0" width="14" height="6" rx="1" fill="#10b981" />
+        </g>
+
+        <!-- Perimeter Calibration Ruler Ticks -->
+        <g stroke="#a7f3d0" stroke-opacity="0.22" stroke-width="1">
+          <path d="M240 44 V54 M360 44 V58 M480 44 V54 M600 44 V54 M840 44 V54 M960 44 V54 M1080 44 V58 M1200 44 V54" />
+          <path d="M240 856 V846 M360 856 V842 M480 856 V846 M600 856 V846 M840 856 V846 M960 856 V846 M1080 856 V842 M1200 856 V846" />
+          <path d="M44 210 H54 M44 330 H58 M44 570 H58 M44 690 H54" />
+          <path d="M1396 210 H1386 M1396 330 H1382 M1396 570 H1382 M1396 690 H1386" />
+        </g>
+      </svg>
+
+      <!-- FLOATING WHITE LABEL NAVIGATION -->
+      <header class="top-nav" aria-label="Primary Navigation">
+        <div class="nav-group nav-group--left">
+          <button type="button" class="nav-pill is-active" data-nav="studio">my studio</button>
+          <button type="button" class="nav-pill" data-nav="portfolio">portfolio</button>
+        </div>
+
+        <button type="button" class="nav-center-brand" data-nav="studio" aria-label="Angga Hermawan — Return to Studio">
+          ANGGA HERMAWAN
+        </button>
+
+        <div class="nav-group nav-group--right">
+          <button type="button" class="nav-pill" data-nav="about">about me</button>
+          <a
+            href="https://wa.me/6289629842943"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="nav-pill"
+          >
+            contact me
+          </a>
+        </div>
+
+        <button type="button" class="mobile-menu-btn" id="mobileMenuOpen" aria-label="Open menu">
+          menu
+        </button>
+      </header>
+
+      <!-- MOBILE NAVIGATION DRAWER -->
+      <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+        <button type="button" class="mobile-drawer-close" id="mobileMenuClose" aria-label="Close menu">&times;</button>
+        <button type="button" class="nav-pill" data-nav="studio">my studio</button>
+        <button type="button" class="nav-pill" data-nav="portfolio">portfolio</button>
+        <button type="button" class="nav-pill" data-nav="about">about me</button>
+        <a
+          href="https://wa.me/6289629842943"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="nav-pill"
+        >
+          contact me
+        </a>
+      </div>
+
+      <!-- HERO STUDIO SCENE -->
+      <section class="studio-scene" id="studioScene" aria-label="Angga Hermawan Creative Studio">
+        <div class="hero-wordmark-layer" aria-hidden="true">
+          <h1 class="hero-wordmark">ANGGA HERMAWAN</h1>
+        </div>
+
+        <div class="designer-stage">
+          <div class="designer-figure" id="designerFigure">
+            <img
+              id="designerImg"
+              class="designer-img-fallback"
+              src="assets/designer.png"
+              alt="Angga Hermawan — Graphic Designer holding a smartphone and silver laptop"
+              referrerpolicy="no-referrer"
+            />
+            <button
+              type="button"
+              class="laptop-hand-hotspot"
+              data-nav="portfolio"
+              aria-label="Open portfolio inside laptop"
+            >
+              <span class="hotspot-label">Open Portfolio</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="designer-floor-fade" aria-hidden="true"></div>
+
+        <div class="handwritten-overlay" aria-hidden="true">graphic-design</div>
+
+        <div class="studio-bottom-bar">
+          <div class="studio-meta-block">
+            <span class="studio-meta-title">Graphic Designer · Angga Creative</span>
+            <span class="studio-meta-sub">Brand Identity · Packaging · Creative Visual · Social Media · Illustration &amp; Vector</span>
+          </div>
+          <button type="button" class="dive-cue-btn" data-nav="portfolio">
+            <span>Enter Portfolio</span>
+            <span class="dive-cue-arrow" aria-hidden="true">↓</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- HANGING DESIGNER ID CARD -->
+      <aside class="lanyard-anchor" id="lanyardAnchor" aria-label="Designer Identity Card">
+        <div class="lanyard-drop">
+          <div class="lanyard-pendulum" id="lanyardPendulum">
+            <div class="lanyard-strap" aria-hidden="true"></div>
+            <div class="lanyard-clip" aria-hidden="true"></div>
+            <div class="id-sleeve" id="idSleeve">
+              <div class="id-card">
+                <div class="id-card-top">
+                  <span class="id-card-label">DESIGNER CARD</span>
+                  <span class="id-card-year">2026</span>
+                </div>
+                <div class="id-card-role">GRAPHIC DESIGNER</div>
+                <div class="id-card-photo-wrap">
+                  <div class="id-card-photo-frame">
+                    <img
+                      class="id-card-photo"
+                      src="assets/designer.png"
+                      alt="Angga Hermawan ID portrait"
+                      referrerpolicy="no-referrer"
+                    />
+                  </div>
+                  <div class="id-card-name-block">
+                    <span class="id-field-key">NAME</span>
+                    <span class="id-field-val">ANGGA HERMAWAN</span>
+                  </div>
+                </div>
+                <div class="id-card-grid">
+                  <div class="id-card-grid-full">
+                    <span class="id-field-key">SPECIALTY</span>
+                    <span class="id-field-val">GRAPHIC DESIGN</span>
+                  </div>
+                  <div>
+                    <span class="id-field-key">WHATSAPP</span>
+                    <span class="id-field-val">089629842943</span>
+                  </div>
+                  <div>
+                    <span class="id-field-key">LOCATION</span>
+                    <span class="id-field-val">INDONESIA</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- 3D SILVER LAPTOP & PORTFOLIO VIEWER -->
+      <section class="laptop-dive-layer" id="portfolioLayer" aria-label="Graphic Design Portfolio">
+        <div class="laptop-3d-rig" id="laptopRig">
+          <div class="laptop-lid">
+            <div class="laptop-bezel">
+              <div class="laptop-camera-dot" aria-hidden="true"></div>
+              <div class="screen-os">
+                <div class="screen-topbar">
+                  <span class="screen-brand">ANGGA CREATIVE · 2026</span>
+                  <div class="case-tabs" role="tablist" aria-label="Portfolio Cases">
+                    <button type="button" class="case-tab-btn is-active" role="tab" aria-selected="true" data-case="0" aria-label="01 Brand Identity">
+                      <span class="tab-num">01</span><span class="tab-label"> · Brand Identity</span>
+                    </button>
+                    <button type="button" class="case-tab-btn" role="tab" aria-selected="false" data-case="1" aria-label="02 Packaging">
+                      <span class="tab-num">02</span><span class="tab-label"> · Packaging</span>
+                    </button>
+                    <button type="button" class="case-tab-btn" role="tab" aria-selected="false" data-case="2" aria-label="03 Creative Visual">
+                      <span class="tab-num">03</span><span class="tab-label"> · Creative Visual</span>
+                    </button>
+                    <button type="button" class="case-tab-btn" role="tab" aria-selected="false" data-case="3" aria-label="04 Social Media">
+                      <span class="tab-num">04</span><span class="tab-label"> · Social Media</span>
+                    </button>
+                    <button type="button" class="case-tab-btn" role="tab" aria-selected="false" data-case="4" aria-label="05 Illustration and Vector">
+                      <span class="tab-num">05</span><span class="tab-label"> · Illustration &amp; Vector</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="screen-body">
+                  <div class="case-visual-frame">
+                    <img
+                      id="caseVisualImg"
+                      class="case-visual-img"
+                      src="assets/case-1.jpg"
+                      alt="Brand Identity presentation showcase"
+                      referrerpolicy="no-referrer"
+                    />
+                    <div id="caseVisualFallback" class="case-visual-fallback">
+                      <span id="caseFallbackTitle">BRAND IDENTITY</span>
+                    </div>
+                  </div>
+
+                  <div class="case-info-pane">
+                    <div class="case-ticket-header">
+                      <div class="case-index-line" id="caseIndexLine">CASE 01 / 05</div>
+                      <h2 class="case-title" id="caseTitle">CASE 01 — BRAND IDENTITY</h2>
+
+                      <div class="case-meta-list">
+                        <div class="case-meta-row">
+                          <span class="case-meta-key">STUDIO</span>
+                          <span class="case-meta-val" id="caseStudio">ANGGA CREATIVE</span>
+                        </div>
+                        <div class="case-meta-row">
+                          <span class="case-meta-key">YEAR</span>
+                          <span class="case-meta-val" id="caseYear">2026</span>
+                        </div>
+                        <div class="case-meta-row case-meta-row--category">
+                          <span class="case-meta-key">CATEGORY</span>
+                          <span class="case-meta-val" id="caseCategory">BRANDING / VISUAL IDENTITY</span>
+                        </div>
+                      </div>
+
+                      <p class="case-description" id="caseDescription">
+                        — creating memorable brand identities through distinctive visual systems, typography, colors, and creative direction.
+                      </p>
+                    </div>
+
+                    <div class="case-cta-row">
+                      <a
+                        href="https://wa.me/6289629842943"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="cta-primary"
+                      >
+                        discuss a project
+                      </a>
+                      <button type="button" class="cta-secondary" data-nav="studio">
+                        back to studio
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="screen-footer">
+                  <div class="case-nav-controls">
+                    <button type="button" class="case-arrow-btn" id="prevCaseBtn" aria-label="Previous case">
+                      ← Previous
+                    </button>
+                    <button type="button" class="case-arrow-btn" id="nextCaseBtn" aria-label="Next case">
+                      Next →
+                    </button>
+                  </div>
+                  <span class="screen-hint">Use ← → keys or swipe to switch cases · Scroll up for studio</span>
+                </div>
+              </div>
+            </div>
+            <div class="laptop-deck" aria-hidden="true"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT ME PANEL -->
+      <section class="about-overlay" id="aboutOverlay" aria-label="About Angga Hermawan">
+        <div class="about-card">
+          <div class="about-portrait-box">
+            <img
+              src="assets/about.png"
+              alt="Angga Hermawan — Graphic Designer"
+              referrerpolicy="no-referrer"
+            />
+          </div>
+          <div>
+            <span class="about-kicker">ABOUT ME · GRAPHIC DESIGNER</span>
+            <h2 class="about-heading">ANGGA HERMAWAN</h2>
+            <p class="about-copy">
+              Indonesian graphic designer leading Angga Creative, specializing in brand identity systems,
+              packaging architecture, creative visual direction, social media design, and bespoke vector
+              illustration. Every project pairs disciplined typography with crafted visual storytelling built
+              to make brands unmistakable.
+            </p>
+            <div class="about-specs">
+              <div>
+                <span class="about-spec-label">STUDIO</span>
+                <span class="about-spec-value">ANGGA CREATIVE</span>
+              </div>
+              <div>
+                <span class="about-spec-label">WHATSAPP</span>
+                <span class="about-spec-value">089629842943</span>
+              </div>
+              <div>
+                <span class="about-spec-label">LOCATION</span>
+                <span class="about-spec-value">INDONESIA · 2026</span>
+              </div>
+            </div>
+            <div class="about-actions">
+              <a
+                href="https://wa.me/6289629842943"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="cta-primary"
+              >
+                discuss a project
+              </a>
+              <button type="button" class="cta-secondary" data-nav="portfolio">
+                view portfolio
+              </button>
+              <button type="button" class="cta-secondary" data-nav="studio">
+                my studio
+              </button>
+              <button type="button" class="cta-secondary" id="adminOpenBtn">admin</button>
+              </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      // ISI dengan data dari Supabase: Project Settings > API
+      window.SUPABASE_CONFIG = { url: 'https://bxzbpsghmuvdpcbopmur.supabase.co', anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ4emJwc2dobXV2ZHBjYm9wbXVyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTUxNTc1NjMsImV4cCI6MjExMDczMzU2M30.XjJSq5EGI2-BZElOlu9c0D1NBEaTBMGrkcksDYKE4hM' };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+    <script>
+      (function () {
+        'use strict';
+
+        var CASES = [
+          {
+            indexLabel: 'CASE 01 / 05',
+            title: 'CASE 01 — BRAND IDENTITY',
+            shortTitle: 'BRAND IDENTITY',
+            studio: 'ANGGA CREATIVE',
+            category: 'BRANDING / VISUAL IDENTITY',
+            year: '2026',
+            description:
+              '— creating memorable brand identities through distinctive visual systems, typography, colors, and creative direction.',
+            image: 'assets/case-1.jpg',
+            alt: 'Brand Identity showcase featuring geometric monogram, stationery, and brand guidelines book'
+          },
+          {
+            indexLabel: 'CASE 02 / 05',
+            title: 'CASE 02 — PACKAGING DESIGN',
+            shortTitle: 'PACKAGING DESIGN',
+            studio: 'ANGGA CREATIVE',
+            category: 'PACKAGING / PRODUCT DESIGN',
+            year: '2026',
+            description:
+              '— transforming ordinary products into compelling visual experiences through thoughtful packaging and graphic compositions.',
+            image: 'assets/case-2.jpg',
+            alt: 'Packaging Design showcase with matte green glass bottles, metallic containers, and Swiss typographic boxes'
+          },
+          {
+            indexLabel: 'CASE 03 / 05',
+            title: 'CASE 03 — CREATIVE VISUAL',
+            shortTitle: 'CREATIVE VISUAL',
+            studio: 'ANGGA CREATIVE',
+            category: 'POSTER / DIGITAL DESIGN',
+            year: '2026',
+            description:
+              '— exploring bold visual compositions, expressive typography, and creative concepts to communicate ideas through design.',
+            image: 'assets/case-3.jpg',
+            alt: 'Creative Visual exhibition featuring bold typographic posters and digital campaign mockups'
+          },
+          {
+            indexLabel: 'CASE 04 / 05',
+            title: 'CASE 04 — SOCIAL MEDIA DESIGN',
+            shortTitle: 'SOCIAL MEDIA DESIGN',
+            studio: 'ANGGA CREATIVE',
+            category: 'SOCIAL MEDIA / DIGITAL CAMPAIGN',
+            year: '2026',
+            description:
+              '— designing scroll-stopping social media feeds, cohesive visual campaigns, carousel layouts, and brand storytelling for digital audiences.',
+            image: 'assets/case-4.jpg',
+            alt: 'Social Media Design showcase featuring coordinated mobile feed grids, carousel slides, and digital campaign layouts'
+          },
+          {
+            indexLabel: 'CASE 05 / 05',
+            title: 'CASE 05 — ILLUSTRATION & VECTOR',
+            shortTitle: 'ILLUSTRATION & VECTOR',
+            studio: 'ANGGA CREATIVE',
+            category: 'ILLUSTRATION / VECTOR ARTWORK',
+            year: '2026',
+            description:
+              '— crafting custom vector illustrations, iconic visual characters, geometric compositions, and scalable artwork with precision and personality.',
+            image: 'assets/case-5.jpg',
+            alt: 'Illustration and Vector showcase featuring botanical and geometric vector prints alongside Bezier wireframe sheets'
+          }
+        ];
+
+        var state = {
+          view: 'studio', // 'studio' | 'portfolio' | 'about'
+          caseIndex: 0,
+          transitionLockUntil: 0
+        };
+
+        var body = document.body;
+        var navButtons = document.querySelectorAll('[data-nav]');
+        var tabButtons = document.querySelectorAll('[data-case]');
+        var mobileDrawer = document.getElementById('mobileDrawer');
+        var mobileMenuOpen = document.getElementById('mobileMenuOpen');
+        var mobileMenuClose = document.getElementById('mobileMenuClose');
+
+        var caseVisualImg = document.getElementById('caseVisualImg');
+        var caseVisualFallback = document.getElementById('caseVisualFallback');
+        var caseFallbackTitle = document.getElementById('caseFallbackTitle');
+        var caseIndexLine = document.getElementById('caseIndexLine');
+        var caseTitle = document.getElementById('caseTitle');
+        var caseStudio = document.getElementById('caseStudio');
+        var caseCategory = document.getElementById('caseCategory');
+        var caseYear = document.getElementById('caseYear');
+        var caseDescription = document.getElementById('caseDescription');
+        var prevCaseBtn = document.getElementById('prevCaseBtn');
+        var nextCaseBtn = document.getElementById('nextCaseBtn');
+
+        // ------------------------------------------------------------------
+        // PRELOAD CASE IMAGES
+        // ------------------------------------------------------------------
+        CASES.forEach(function (item) {
+          var img = new Image();
+          img.src = item.image;
+        });
+
+
+        // ------------------------------------------------------------------
+        // LANYARD PENDULUM PHYSICS (NATURAL SWINGING MOVEMENT)
+        // ------------------------------------------------------------------
+        function initLanyardPhysics() {
+          var pendulum = document.getElementById('lanyardPendulum');
+          var sleeve = document.getElementById('idSleeve');
+          if (!pendulum || !sleeve) return;
+
+          var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          if (prefersReduced) return;
+
+          var angle = 4.2;
+          var velocity = 0;
+          var stiffness = 0.022;
+          var damping = 0.968;
+          var ambientPhase = 0;
+
+          sleeve.addEventListener('pointerenter', function (e) {
+            var rect = sleeve.getBoundingClientRect();
+            var relX = (e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2);
+            velocity += (relX >= 0 ? -1 : 1) * 0.48;
+          });
+
+          sleeve.addEventListener('pointerdown', function () {
+            velocity += (Math.random() > 0.5 ? 1 : -1) * 0.95;
+          });
+
+          function tick() {
+            ambientPhase += 0.014;
+            var gentleBreeze = Math.sin(ambientPhase) * 0.012;
+            var acceleration = -stiffness * angle + gentleBreeze;
+            velocity = (velocity + acceleration) * damping;
+            angle += velocity;
+            pendulum.style.transform = 'rotate(' + angle.toFixed(3) + 'deg)';
+            requestAnimationFrame(tick);
+          }
+
+          requestAnimationFrame(tick);
+        }
+
+        // ------------------------------------------------------------------
+        // NAVIGATION & CAMERA DIVE STATE MACHINE
+        // ------------------------------------------------------------------
+        function setView(nextView) {
+          if (nextView === state.view) return;
+          state.view = nextView;
+          state.transitionLockUntil = Date.now() + 650;
+
+          body.classList.remove('view-studio', 'view-portfolio', 'view-about');
+          body.classList.add('view-' + nextView);
+
+          navButtons.forEach(function (btn) {
+            var target = btn.getAttribute('data-nav');
+            if (btn.classList.contains('nav-pill')) {
+              btn.classList.toggle('is-active', target === nextView);
+            }
+          });
+
+          closeMobileDrawer();
+        }
+
+        function renderCase(idx) {
+          var total = CASES.length;
+          state.caseIndex = ((idx % total) + total) % total;
+          var item = CASES[state.caseIndex];
+
+          caseVisualFallback.style.display = 'none';
+          caseVisualImg.style.opacity = '0.25';
+
+          caseVisualImg.onload = function () {
+            caseVisualImg.style.opacity = '1';
+          };
+          caseVisualImg.onerror = function () {
+            caseFallbackTitle.textContent = item.shortTitle;
+            caseVisualFallback.style.display = 'flex';
+          };
+
+          caseVisualImg.src = item.image;
+          caseVisualImg.alt = item.alt;
+
+          caseIndexLine.textContent = item.indexLabel;
+          caseTitle.textContent = item.title;
+          caseStudio.textContent = item.studio;
+          caseCategory.textContent = item.category;
+          caseYear.textContent = item.year;
+          caseDescription.textContent = item.description;
+
+          tabButtons.forEach(function (tab, i) {
+            var active = i === state.caseIndex;
+            tab.classList.toggle('is-active', active);
+            tab.setAttribute('aria-selected', active ? 'true' : 'false');
+            if (active && state.view === 'portfolio') {
+              // Scroll ONLY the tab strip itself. scrollIntoView() would also scroll
+              // overflow:hidden ancestors (.app-stage) and shift the whole laptop on mobile.
+              var strip = tab.parentElement;
+              if (strip && strip.scrollWidth > strip.clientWidth + 1) {
+                var left = tab.offsetLeft - (strip.clientWidth - tab.offsetWidth) / 2;
+                strip.scrollTo({ left: Math.max(0, left), behavior: 'smooth' });
+              }
+            }
+          });
+        }
+
+        function openMobileDrawer() {
+          if (!mobileDrawer) return;
+          mobileDrawer.classList.add('is-open');
+          mobileDrawer.setAttribute('aria-hidden', 'false');
+        }
+
+        function closeMobileDrawer() {
+          if (!mobileDrawer) return;
+          mobileDrawer.classList.remove('is-open');
+          mobileDrawer.setAttribute('aria-hidden', 'true');
+        }
+
+        // ------------------------------------------------------------------
+        // EVENT BINDINGS (BUTTONS, WHEEL, TOUCH, KEYBOARD)
+        // ------------------------------------------------------------------
+        navButtons.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var target = btn.getAttribute('data-nav');
+            if (target) setView(target);
+          });
+        });
+
+        tabButtons.forEach(function (tab) {
+          tab.addEventListener('click', function () {
+            var idx = parseInt(tab.getAttribute('data-case') || '0', 10);
+            renderCase(idx);
+          });
+        });
+
+        if (prevCaseBtn) {
+          prevCaseBtn.addEventListener('click', function () {
+            renderCase(state.caseIndex - 1);
+          });
+        }
+
+        if (nextCaseBtn) {
+          nextCaseBtn.addEventListener('click', function () {
+            renderCase(state.caseIndex + 1);
+          });
+        }
+
+        if (mobileMenuOpen) mobileMenuOpen.addEventListener('click', openMobileDrawer);
+        if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeMobileDrawer);
+
+        // Wheel / Trackpad Dive Trigger
+        window.addEventListener(
+          'wheel',
+          function (e) {
+            if (Date.now() < state.transitionLockUntil) return;
+            if (Math.abs(e.deltaY) < 18) return;
+
+            if (state.view === 'studio' && e.deltaY > 0) {
+              setView('portfolio');
+            } else if (state.view === 'portfolio' && e.deltaY < 0) {
+              setView('studio');
+            }
+          },
+          { passive: true }
+        );
+
+        // Touch Gestures (Swipe Up to Dive, Swipe Down to Return, Swipe Left/Right for Cases)
+        var touchStartX = 0;
+        var touchStartY = 0;
+        var touchStartedInTabs = false;
+        var touchStartScrollTop = 0;
+
+        window.addEventListener(
+          'touchstart',
+          function (e) {
+            if (!e.touches || !e.touches.length) return;
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+            var targetEl = e.target;
+            touchStartedInTabs = !!(targetEl && targetEl.closest && targetEl.closest('.case-tabs'));
+            var scrollContainer = targetEl && targetEl.closest ? targetEl.closest('.screen-body, .about-card') : null;
+            touchStartScrollTop = scrollContainer ? scrollContainer.scrollTop : 0;
+          },
+          { passive: true }
+        );
+
+        window.addEventListener(
+          'touchend',
+          function (e) {
+            if (!e.changedTouches || !e.changedTouches.length) return;
+            var dx = e.changedTouches[0].clientX - touchStartX;
+            var dy = e.changedTouches[0].clientY - touchStartY;
+
+            if (touchStartedInTabs) return;
+
+            if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 48) {
+              if (state.view === 'portfolio') {
+                renderCase(dx < 0 ? state.caseIndex + 1 : state.caseIndex - 1);
+              }
+              return;
+            }
+
+            if (Math.abs(dy) > 64 && Date.now() >= state.transitionLockUntil) {
+              if (state.view === 'studio' && dy < 0) {
+                setView('portfolio');
+              } else if (state.view === 'portfolio' && dy > 0 && touchStartScrollTop <= 2) {
+                setView('studio');
+              }
+            }
+          },
+          { passive: true }
+        );
+
+        // Keyboard Navigation
+        window.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') {
+            if (mobileDrawer && mobileDrawer.classList.contains('is-open')) {
+              closeMobileDrawer();
+              return;
+            }
+            if (state.view !== 'studio') {
+              setView('studio');
+            }
+            return;
+          }
+
+          if (state.view === 'studio' && (e.key === 'ArrowDown' || e.key === 'PageDown')) {
+            e.preventDefault();
+            setView('portfolio');
+          } else if (state.view === 'portfolio') {
+            if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+              e.preventDefault();
+              setView('studio');
+            } else if (e.key === 'ArrowRight') {
+              e.preventDefault();
+              renderCase(state.caseIndex + 1);
+            } else if (e.key === 'ArrowLeft') {
+              e.preventDefault();
+              renderCase(state.caseIndex - 1);
+            }
+          }
+        });
+
+        window.PORTFOLIO = { CASES: CASES, render: renderCase, state: state, setView: setView };
+        initLanyardPhysics();
+        renderCase(0);
+      })();
+    </script>
+    <script>
+      (function () {
+        'use strict';
+        var C = window.SUPABASE_CONFIG || {};
+        var sb = (C.url && /^https?:/.test(C.url) && window.supabase) ? window.supabase.createClient(C.url, C.anonKey) : null;
+        var BUCKET = 'portfolio', P = window.PORTFOLIO, content = {}, tab = 'cases', ci = 0;
+        var $ = function (s, r) { return (r || document).querySelector(s); };
+        var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+        var esc = function (s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); };
+        var snake = function (k) { return k.replace(/[A-Z]/g, function (m) { return '_' + m.toLowerCase(); }); };
+
+        function setImg(el, url) { if (el && url) el.src = url; }
+        function applyContent() {
+          var c = content, sv = $$('.about-spec-value');
+          if (c.about_heading) $('.about-heading').textContent = c.about_heading;
+          if (c.about_copy) $('.about-copy').textContent = c.about_copy;
+          if (c.about_studio) sv[0].textContent = c.about_studio;
+          if (c.about_location) sv[2].textContent = c.about_location;
+          if (c.about_whatsapp) {
+            sv[1].textContent = c.about_whatsapp;
+            $$('.id-card-grid .id-field-val')[1].textContent = c.about_whatsapp;
+            var n = c.about_whatsapp.replace(/\D/g, '');
+            if (n.charAt(0) === '0') n = '62' + n.slice(1);
+            $$('a[href^="https://wa.me/"]').forEach(function (a) { a.href = 'https://wa.me/' + n; });
+          }
+          setImg($('.about-portrait-box img'), c.img_about);
+          setImg($('#designerImg'), c.img_hero);
+          setImg($('.id-card-photo'), c.img_idcard);
+        }
+
+        async function load() {
+          if (!sb) return;
+          try {
+            var res = await Promise.all([sb.from('portfolio_cases').select('*').order('idx'), sb.from('site_content').select('*')]);
+            (res[1].data || []).forEach(function (r) { content[r.key] = r.value; });
+            (res[0].data || []).forEach(function (r) {
+              var t = P.CASES[r.idx]; if (!t) return;
+              ['title', 'shortTitle', 'studio', 'category', 'year', 'description', 'alt'].forEach(function (k) { var v = r[snake(k)]; if (v) t[k] = v; });
+              if (r.image_url) t.image = r.image_url;
+            });
+            applyContent(); P.render(P.state.caseIndex);
+          } catch (e) { console.warn('Supabase load error', e); }
+        }
+
+        // ---------- UI ----------
+        var root = document.createElement('div');
+        root.className = 'adm'; root.hidden = true; document.body.appendChild(root);
+        root.addEventListener('keydown', function (e) { e.stopPropagation(); });
+        root.addEventListener('click', function (e) { if (e.target.dataset && e.target.dataset.a === 'close') root.hidden = true; });
+        var box = function (h) { return '<div class="adm-box">' + h + '</div>'; };
+        function msg(t, bad) { var m = $('#aM'); if (m) { m.textContent = t; m.className = 'adm-msg' + (bad ? ' bad' : ''); } }
+
+        async function show() {
+          if (!sb) { root.innerHTML = box('<h3>Supabase belum diatur</h3><p class="adm-msg">Isi SUPABASE_CONFIG (url &amp; anonKey) di index.html.</p><br><button class="adm-btn" data-a="close">Tutup</button>'); return; }
+          var s = (await sb.auth.getSession()).data.session;
+          s ? dash(s.user) : login();
+        }
+        function login() {
+          root.innerHTML = box('<h3>ADMIN LOGIN</h3><input id="aE" type="email" placeholder="Email" autocomplete="username"><input id="aP" type="password" placeholder="Password" autocomplete="current-password"><p class="adm-msg" id="aM"></p><div class="adm-row"><button class="adm-btn adm-pri" id="aGo">Login</button><button class="adm-btn" data-a="close">Tutup</button></div>');
+          var go = async function () {
+            msg('Masuk...');
+            var r = await sb.auth.signInWithPassword({ email: $('#aE').value.trim(), password: $('#aP').value });
+            r.error ? msg(r.error.message, 1) : show();
+          };
+          $('#aGo').onclick = go; $('#aP').onkeydown = function (e) { if (e.key === 'Enter') go(); };
+        }
+        function dash(user) {
+          root.innerHTML = '<div class="adm-wrap"><div class="adm-top"><h3 style="margin:0">DASHBOARD</h3><span>' + esc(user.email) + '</span><span class="adm-msg" id="aM"></span><button class="adm-btn" id="aOut">Logout</button><button class="adm-btn" data-a="close">Tutup</button></div><div class="adm-tabs"><button data-t="cases">Portfolio</button><button data-t="about">About &amp; Studio</button></div><div id="aBody"></div></div>';
+          $('#aOut').onclick = async function () { await sb.auth.signOut(); login(); };
+          $$('[data-t]', root).forEach(function (b) { b.onclick = function () { tab = b.dataset.t; paint(); }; });
+          paint();
+        }
+        function paint() {
+          $$('[data-t]', root).forEach(function (b) { b.className = b.dataset.t === tab ? 'on' : ''; });
+          tab === 'cases' ? casesTab() : aboutTab();
+        }
+        function f(label, name, val, area) {
+          return '<label>' + label + (area ? '<textarea name="' + name + '">' + esc(val) + '</textarea>' : '<input name="' + name + '" value="' + esc(val) + '">') + '</label>';
+        }
+        function imgF(label, name, src) {
+          return '<div class="adm-img"><span>' + label + '</span><img data-prev="' + name + '" src="' + esc(src) + '" alt=""><input type="file" accept="image/*" data-up="' + name + '"></div>';
+        }
+        function shrink(file) {
+          return new Promise(function (res, rej) {
+            var im = new Image(), u = URL.createObjectURL(file);
+            im.onload = function () {
+              var s = Math.min(1, 1800 / Math.max(im.width, im.height)), c = document.createElement('canvas');
+              c.width = Math.round(im.width * s); c.height = Math.round(im.height * s);
+              c.getContext('2d').drawImage(im, 0, 0, c.width, c.height);
+              c.toBlob(function (b) { b ? res(b) : rej(new Error('Gagal memproses gambar')); }, file.type === 'image/jpeg' ? 'image/jpeg' : 'image/png', 0.88);
+              URL.revokeObjectURL(u);
+            };
+            im.onerror = function () { rej(new Error('File bukan gambar valid')); };
+            im.src = u;
+          });
+        }
+        function bindImg(b, cb, folder) {
+          $$('[data-up]', b).forEach(function (inp) {
+            inp.onchange = async function () {
+              var file = inp.files[0]; if (!file) return;
+              msg('Mengupload ' + file.name + '...');
+              try {
+                var blob = await shrink(file), ext = blob.type === 'image/png' ? 'png' : 'jpg';
+                var path = folder + '/' + inp.dataset.up + '-' + Date.now() + '.' + ext;
+                var up = await sb.storage.from(BUCKET).upload(path, blob, { contentType: blob.type, upsert: true });
+                if (up.error) throw up.error;
+                var url = sb.storage.from(BUCKET).getPublicUrl(path).data.publicUrl;
+                $('[data-prev="' + inp.dataset.up + '"]', b).src = url;
+                cb(inp.dataset.up, url); msg('Foto terupload — klik Simpan ✓');
+              } catch (e) { msg(e.message || 'Upload gagal', 1); }
+            };
+          });
+        }
+        function casesTab() {
+          var c = P.CASES[ci], b = $('#aBody');
+          b.innerHTML = '<div class="adm-pick">' + P.CASES.map(function (x, i) { return '<button data-i="' + i + '" class="' + (i === ci ? 'on' : '') + '">' + (i + 1) + '. ' + esc(x.shortTitle) + '</button>'; }).join('') + '</div>' +
+            '<div class="adm-grid"><div>' + f('Judul', 'title', c.title) + f('Judul singkat', 'shortTitle', c.shortTitle) + f('Kategori', 'category', c.category) + f('Studio', 'studio', c.studio) + f('Tahun', 'year', c.year) + f('Alt gambar', 'alt', c.alt) +
+            '</div><div>' + f('Deskripsi', 'description', c.description, 1) + imgF('Foto portfolio', 'image', c.image) + '</div></div><button class="adm-btn adm-pri" id="aSave">Simpan</button>';
+          $$('[data-i]', b).forEach(function (x) { x.onclick = function () { ci = +x.dataset.i; casesTab(); }; });
+          bindImg(b, function (n, u) { c.image = u; }, 'cases');
+          $('#aSave').onclick = async function () {
+            var row = { idx: ci, image_url: /^https?:/.test(c.image) ? c.image : null };
+            ['title', 'shortTitle', 'category', 'studio', 'year', 'alt', 'description'].forEach(function (k) { c[k] = $('[name=' + k + ']', b).value; row[snake(k)] = c[k]; });
+            msg('Menyimpan...');
+            var r = await sb.from('portfolio_cases').upsert(row);
+            if (r.error) return msg(r.error.message, 1);
+            msg('Tersimpan ✓'); P.render(ci);
+          };
+        }
+        function aboutTab() {
+          var b = $('#aBody'), sv = $$('.about-spec-value'), up = {};
+          var v = { about_heading: $('.about-heading').textContent, about_studio: sv[0].textContent, about_whatsapp: sv[1].textContent, about_location: sv[2].textContent, about_copy: $('.about-copy').textContent.replace(/\s+/g, ' ').trim() };
+          b.innerHTML = '<div class="adm-grid"><div>' + f('Nama / heading', 'about_heading', v.about_heading) + f('Studio', 'about_studio', v.about_studio) + f('WhatsApp', 'about_whatsapp', v.about_whatsapp) + f('Lokasi', 'about_location', v.about_location) + f('Teks About me', 'about_copy', v.about_copy, 1) +
+            '</div><div>' + imgF('Foto About me', 'img_about', $('.about-portrait-box img').src) + imgF('Foto Studio (hero)', 'img_hero', $('#designerImg').src) + imgF('Foto ID Card', 'img_idcard', $('.id-card-photo').src) + '</div></div><button class="adm-btn adm-pri" id="aSave">Simpan</button>';
+          bindImg(b, function (n, u) { up[n] = u; }, 'site');
+          $('#aSave').onclick = async function () {
+            var rows = Object.keys(v).map(function (k) { return { key: k, value: $('[name=' + k + ']', b).value }; });
+            Object.keys(up).forEach(function (k) { rows.push({ key: k, value: up[k] }); });
+            msg('Menyimpan...');
+            var r = await sb.from('site_content').upsert(rows);
+            if (r.error) return msg(r.error.message, 1);
+            rows.forEach(function (x) { content[x.key] = x.value; }); applyContent(); msg('Tersimpan ✓');
+          };
+        }
+
+        var openBtn = $('#adminOpenBtn');
+        if (openBtn) openBtn.addEventListener('click', function () { root.hidden = false; show(); });
+        load();
+      })();
+    </script>
+  </body>
+</html>
